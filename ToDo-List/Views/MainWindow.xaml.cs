@@ -29,5 +29,9 @@ namespace ToDo_List
         {
             DragMove();
         }
+
+        private void CloseWindow(object sender, RoutedEventArgs e) => Close();
+
+        private void MinimizeWindow(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
     }
 }
