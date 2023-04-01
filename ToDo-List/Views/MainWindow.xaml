@@ -3,10 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ToDo_List"
+        xmlns:local="clr-namespace:ToDo_List" xmlns:viewmodels="clr-namespace:ToDo_List.ViewModels"
         mc:Ignorable="d"
         Title="MainWindow" Height="595" Width="380" ResizeMode="NoResize"
         WindowStyle="None">
+    <Window.DataContext>
+        <viewmodels:MainWindowVM></viewmodels:MainWindowVM>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="225"></RowDefinition>
@@ -29,6 +32,24 @@
             </TextBlock>
         </Grid>
 
+        <Grid Grid.Row="1">
+            <ListBox ItemsSource="{Binding Tasks}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <StackPanel Height="45" Orientation="Horizontal">
+                                <CheckBox Margin="0 0 10 0" IsChecked="{Binding IsCompleted}" VerticalAlignment="Center"></CheckBox>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock FontSize="17" Text="{Binding Title}"></TextBlock>
+                                    <TextBlock Text="{Binding IsCompleted}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        
         <Grid Grid.Row="2">
             <Button>Add task</Button>
         </Grid>
