@@ -16,6 +16,10 @@
 
         <Grid Grid.Row="0" MouseDown="MoveWindow">
             <Image Source="D:\C#\ToDo-List\ToDo-List\ToDo-List\Assets\The Valley.jpg" Stretch="Fill"/>
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Height="30" Width="40" Click="MinimizeWindow">_</Button>
+                <Button Height="30" Width="40" Click="CloseWindow">X</Button>
+            </StackPanel>
             <TextBlock HorizontalAlignment="Left"
                        VerticalAlignment="Bottom"
                        FontSize="33"
