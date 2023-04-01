@@ -24,5 +24,10 @@ namespace ToDo_List
         {
             InitializeComponent();
         }
+
+        private void MoveWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }
