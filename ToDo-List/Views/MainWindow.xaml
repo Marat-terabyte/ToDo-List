@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDo_List"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="595" Width="380" ResizeMode="NoResize"
+        WindowStyle="None">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="225"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="55"></RowDefinition>
+        </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0" MouseDown="MoveWindow">
+            <Image Source="D:\C#\ToDo-List\ToDo-List\ToDo-List\Assets\The Valley.jpg" Stretch="Fill"/>
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       FontSize="33"
+                       Foreground="White"
+                       Margin="10 0 0 0"
+                       Text="01.04.2023">
+            </TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Button>Add task</Button>
+        </Grid>
     </Grid>
 </Window>
