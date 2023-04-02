@@ -28,7 +28,7 @@
                        FontSize="33"
                        Foreground="White"
                        Margin="10 0 0 0"
-                       Text="01.04.2023">
+                       Text="{Binding DateTimeNow}">
             </TextBlock>
         </Grid>
 
@@ -37,11 +37,11 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <StackPanel Height="45" Orientation="Horizontal">
-                                <CheckBox Margin="0 0 10 0" IsChecked="{Binding IsCompleted}" VerticalAlignment="Center"></CheckBox>
+                            <StackPanel Height="55" Orientation="Horizontal">
+                                <CheckBox Margin="0 0 15 0" IsChecked="{Binding IsCompleted}" VerticalAlignment="Center"></CheckBox>
                                 <StackPanel VerticalAlignment="Center">
                                     <TextBlock FontSize="17" Text="{Binding Title}"></TextBlock>
-                                    <TextBlock Text="{Binding IsCompleted}"></TextBlock>
+                                    <TextBlock FontSize="14" Text="{Binding IsCompleted}"></TextBlock>
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>
