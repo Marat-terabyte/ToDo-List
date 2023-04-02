@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using ToDo_List.Models;
 
 namespace ToDo_List.ViewModels
@@ -11,6 +12,14 @@ namespace ToDo_List.ViewModels
     internal class MainWindowVM
     {
         public ObservableCollection<Models.Task> Tasks { get; set; }
+
+        public string DateTimeNow
+        {
+            get
+            {
+                return DateTime.Now.ToString("D");
+            }
+        }
 
         public MainWindowVM()
         {
