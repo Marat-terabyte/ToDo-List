@@ -10,6 +10,11 @@
     <Window.DataContext>
         <viewmodels:MainWindowVM></viewmodels:MainWindowVM>
     </Window.DataContext>
+
+    <Window.Resources>
+        <local:CompletedConverter x:Key="CompletedConverter"/>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="225"></RowDefinition>
@@ -41,7 +46,7 @@
                                 <CheckBox Margin="0 0 15 0" IsChecked="{Binding IsCompleted}" VerticalAlignment="Center"></CheckBox>
                                 <StackPanel VerticalAlignment="Center">
                                     <TextBlock FontSize="17" Text="{Binding Title}"></TextBlock>
-                                    <TextBlock FontSize="14" Text="{Binding IsCompleted}"></TextBlock>
+                                    <TextBlock FontSize="14" Text="{Binding IsCompleted, Converter={StaticResource CompletedConverter}}"></TextBlock>
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>
