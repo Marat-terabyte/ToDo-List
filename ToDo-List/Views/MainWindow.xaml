@@ -57,7 +57,7 @@
         </Grid>
         
         <Grid Grid.Row="2">
-            <Button>Add task</Button>
+            <Button Command="{Binding OpenAddTaskWindowCommand}">Add task</Button>
         </Grid>
     </Grid>
 </Window>
