@@ -5,11 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDo_List.Views" xmlns:viewmodels="clr-namespace:ToDo_List.ViewModels"
         mc:Ignorable="d"
-        Title="AddTask" Height="450" Width="800">
+        Title="AddTask" Height="520" Width="450" ResizeMode="NoResize">
     <Window.DataContext>
         <viewmodels:AddTaskVM></viewmodels:AddTaskVM>
     </Window.DataContext>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="435"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackPanel Width="350" HorizontalAlignment="Center" VerticalAlignment = "Center">
+                <StackPanel Margin="0 0 0 40">
+                    <TextBlock FontSize="22" HorizontalAlignment="Center">Add a task</TextBlock>
+                </StackPanel>
+
+                <StackPanel Margin="0 0 0 10">
+                    <TextBlock FontSize="14" Margin="0 0 10 0">Task name:</TextBlock>
+                    <TextBox Height="22"></TextBox>
+                </StackPanel>
+
+                <StackPanel Margin="0 0 0 10">
+                    <TextBlock FontSize="14">Start</TextBlock>
+                    <DatePicker DisplayDateStart="{Binding DateTimeNow, Mode=OneTime}"></DatePicker>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock FontSize="14">End</TextBlock>
+                    <DatePicker DisplayDateStart="{Binding DateTimeNow, Mode=OneWay}"></DatePicker>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Button FontSize="20">Add a task</Button>
+        </Grid>
     </Grid>
 </Window>
