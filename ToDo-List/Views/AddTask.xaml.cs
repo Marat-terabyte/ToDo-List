@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ToDo_List.ViewModels;
 
 namespace ToDo_List.Views
 {
@@ -19,9 +21,10 @@ namespace ToDo_List.Views
     /// </summary>
     public partial class AddTask : Window
     {
-        public AddTask()
+        public AddTask(ObservableCollection<Models.Task> tasks)
         {
             InitializeComponent();
+            DataContext = new AddTaskVM(tasks, this);
         }
 
         private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();

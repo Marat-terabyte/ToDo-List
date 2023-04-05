@@ -35,6 +35,6 @@ namespace ToDo_List.ViewModels
             OpenAddTaskWindowCommand = new RelayCommand(o => OpenAddTaskWindow());
         }
 
-        private void OpenAddTaskWindow() => new AddTask().Show();
+        private void OpenAddTaskWindow() => new AddTask(Tasks).Show();
     }
 }
