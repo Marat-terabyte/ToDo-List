@@ -8,7 +8,8 @@ namespace ToDo_List.ViewModels
 {
     class AddTaskVM
     {
-        public DateTime DateTimeNow { get; }
+        public Models.Task Task { get; set; }
+        public DateTime DateTimeNow { get; }        
 
         public AddTaskVM()
         {
