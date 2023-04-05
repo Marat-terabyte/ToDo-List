@@ -23,5 +23,9 @@ namespace ToDo_List.Views
         {
             InitializeComponent();
         }
+
+        private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();
+
+        private void MoveWindow(object sender, MouseButtonEventArgs e) => this.DragMove();
     }
 }
