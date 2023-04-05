@@ -7,9 +7,6 @@
         mc:Ignorable="d"
         Title="AddTask" Height="520" Width="450" ResizeMode="NoResize" WindowStyle="None"
         MouseDown="MoveWindow">
-    <Window.DataContext>
-        <viewmodels:AddTaskVM></viewmodels:AddTaskVM>
-    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
@@ -52,7 +49,7 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <Button FontSize="20">Add a task</Button>
+            <Button FontSize="20" Command="{Binding AddTaskCommand}">Add a task</Button>
         </Grid>
     </Grid>
 </Window>
