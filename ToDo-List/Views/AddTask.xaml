@@ -5,17 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDo_List.Views" xmlns:viewmodels="clr-namespace:ToDo_List.ViewModels"
         mc:Ignorable="d"
-        Title="AddTask" Height="520" Width="450" ResizeMode="NoResize">
+        Title="AddTask" Height="520" Width="450" ResizeMode="NoResize" WindowStyle="None"
+        MouseDown="MoveWindow">
     <Window.DataContext>
         <viewmodels:AddTaskVM></viewmodels:AddTaskVM>
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
             <RowDefinition Height="435"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Width="40" Click="CloseWindow">X</Button>
+            </StackPanel>
+        </Grid>
+        
+        <Grid Grid.Row="1">
             <StackPanel Width="350" HorizontalAlignment="Center" VerticalAlignment = "Center">
                 <StackPanel Margin="0 0 0 40">
                     <TextBlock FontSize="22" HorizontalAlignment="Center">Add a task</TextBlock>
@@ -38,7 +46,7 @@
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Button FontSize="20">Add a task</Button>
         </Grid>
     </Grid>
