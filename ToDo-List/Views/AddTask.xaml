@@ -24,24 +24,29 @@
         </Grid>
         
         <Grid Grid.Row="1">
-            <StackPanel Width="350" HorizontalAlignment="Center" VerticalAlignment = "Center">
-                <StackPanel Margin="0 0 0 40">
+            <StackPanel Width="350" HorizontalAlignment="Center" VerticalAlignment = "Center" DataContext="{Binding Task}">
+                <StackPanel Margin="0 0 0 30">
                     <TextBlock FontSize="22" HorizontalAlignment="Center">Add a task</TextBlock>
                 </StackPanel>
 
                 <StackPanel Margin="0 0 0 10">
                     <TextBlock FontSize="14" Margin="0 0 10 0">Task name:</TextBlock>
-                    <TextBox Height="22"></TextBox>
+                    <TextBox Height="22" Text="{Binding Title}"></TextBox>
+                </StackPanel>
+
+                <StackPanel Margin="0 0 0 10">
+                    <TextBlock FontSize="14" Margin="0 0 10 0">Description:</TextBlock>
+                    <TextBox Height="22" Text="{Binding Description}"></TextBox>
                 </StackPanel>
 
                 <StackPanel Margin="0 0 0 10">
                     <TextBlock FontSize="14">Start</TextBlock>
-                    <DatePicker DisplayDateStart="{Binding DateTimeNow, Mode=OneTime}"></DatePicker>
+                    <DatePicker Text="{Binding StartTime}"></DatePicker>
                 </StackPanel>
 
                 <StackPanel>
                     <TextBlock FontSize="14">End</TextBlock>
-                    <DatePicker DisplayDateStart="{Binding DateTimeNow, Mode=OneWay}"></DatePicker>
+                    <DatePicker Text="{Binding EndTime}"></DatePicker>
                 </StackPanel>
             </StackPanel>
         </Grid>
