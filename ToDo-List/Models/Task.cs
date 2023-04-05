@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ToDo_List.Models
 {
-    internal class Task : INotifyPropertyChanged
+    public class Task : INotifyPropertyChanged
     {
         #region Fields
         private int _id;
