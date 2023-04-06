@@ -49,6 +49,16 @@
                                     <TextBlock FontSize="17" Text="{Binding Title}"></TextBlock>
                                     <TextBlock FontSize="14" Foreground="{Binding IsCompleted, Converter={StaticResource ForegroundConverter}}" Text="{Binding IsCompleted, Converter={StaticResource CompletedConverter}}"></TextBlock>
                                 </StackPanel>
+
+                                <StackPanel.ToolTip>
+                                    <ToolTip>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding StringFormat=Description: {0}, Path=Description}"></TextBlock>
+                                            <TextBlock Text="{Binding StringFormat=Start: {0}, Path=StartTime}"></TextBlock>
+                                            <TextBlock Text="{Binding StringFormat=Start: {0}, Path=EndTime}"></TextBlock>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </StackPanel.ToolTip>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>
