@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDo_List" xmlns:viewmodels="clr-namespace:ToDo_List.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="595" Width="380" ResizeMode="NoResize"
+        Title="MainWindow" Height="590" Width="350" ResizeMode="NoResize"
         WindowStyle="None">
     <Window.DataContext>
         <viewmodels:MainWindowVM></viewmodels:MainWindowVM>
@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" MouseDown="MoveWindow">
-            <Image Source="D:\C#\ToDo-List\ToDo-List\ToDo-List\Assets\The Valley.jpg" Stretch="Fill"/>
+            <Image Source="D:\C#\WPF\ToDo-List\ToDo-List\Assets\The Valley.jpg" Stretch="Fill"/>
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button Height="30" Width="40" Click="MinimizeWindow">_</Button>
                 <Button Height="30" Width="40" Click="CloseWindow">X</Button>
