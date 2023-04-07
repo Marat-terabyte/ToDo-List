@@ -13,10 +13,11 @@ namespace ToDo_List.Models
         #region Fields
         private int _id;
         private string _title;
-        private string _description;
-        private string _startTime;
-        private string _endTime;
-        private bool _isCompleted;
+        private string? _description;
+        private string? _startTime;
+        private string? _endTime;
+        private bool _isCompleted = false;
+        private DatabaseContext _databaseContext;
 
         public int Id
         {
@@ -38,7 +39,7 @@ namespace ToDo_List.Models
             }
         }
         
-        public string Description
+        public string? Description
         {
             get { return _description; }
             set
@@ -48,7 +49,7 @@ namespace ToDo_List.Models
             }
         }
 
-        public string StartTime
+        public string? StartTime
         {
             get { return _startTime; }
             set
@@ -57,7 +58,7 @@ namespace ToDo_List.Models
                 OnPropertyChanged("StartTime");
             }
         }
-        public string EndTime
+        public string? EndTime
         {
             get { return _endTime; }
             set
@@ -73,9 +74,20 @@ namespace ToDo_List.Models
             {
                 _isCompleted = value;
                 OnPropertyChanged("IsCompleted");
+                
+                if (_databaseContext != null)
+                    _databaseContext.ExecuteCommand($"UPDATE tasks SET isDone = '{_isCompleted}' WHERE Id = {_id}");
             }
         }
         #endregion
+        
+        public Task() { }
+
+        public Task(DatabaseContext databaseContext)
+        {
+            _databaseContext = databaseContext;
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName] string prop = "")

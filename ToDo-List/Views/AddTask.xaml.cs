@@ -21,10 +21,10 @@ namespace ToDo_List.Views
     /// </summary>
     public partial class AddTask : Window
     {
-        public AddTask(ObservableCollection<Models.Task> tasks)
+        public AddTask(ObservableCollection<Models.Task> tasks, DatabaseContext databaseContext)
         {
             InitializeComponent();
-            DataContext = new AddTaskVM(tasks, this);
+            DataContext = new AddTaskVM(tasks, databaseContext, this);
         }
 
         private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();

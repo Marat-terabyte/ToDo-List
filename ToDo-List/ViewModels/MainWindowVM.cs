@@ -14,6 +14,7 @@ namespace ToDo_List.ViewModels
     {
         public RelayCommand OpenAddTaskWindowCommand { get; }
         public ObservableCollection<Models.Task> Tasks { get; set; }
+        public DatabaseContext DbContext;
 
         public string DateTimeNow
         {
@@ -25,16 +26,13 @@ namespace ToDo_List.ViewModels
 
         public MainWindowVM()
         {
-            Tasks = new ObservableCollection<Models.Task>
-            {
-                new Models.Task { Id = 1, Title = "Make program", Description = "...", StartTime = "01.04.2023", EndTime = "15.03.2023", IsCompleted = false },
-                new Models.Task { Id = 2, Title = "Доделать программу", Description = "...", StartTime = "01.04.2023", EndTime = "15.03.2023", IsCompleted = true },
-                new Models.Task { Id = 3, Title = "Доделать программу", Description = "...", StartTime = "01.04.2023", EndTime = "15.03.2023", IsCompleted = true }
-            };
+            DbContext = new DatabaseContext();
+            
+            Tasks = DbContext.GetTasks();
 
             OpenAddTaskWindowCommand = new RelayCommand(o => OpenAddTaskWindow());
         }
 
-        private void OpenAddTaskWindow() => new AddTask(Tasks).Show();
+        private void OpenAddTaskWindow() => new AddTask(Tasks, DbContext).Show();
     }
 }

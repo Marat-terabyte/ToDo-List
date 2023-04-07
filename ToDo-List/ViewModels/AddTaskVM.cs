@@ -12,18 +12,20 @@ namespace ToDo_List.ViewModels
     class AddTaskVM
     {
         private ObservableCollection<Models.Task> _tasks;
+        private DatabaseContext _databaseContext;
         private AddTask _window;
 
         public Models.Task Task { get; set; }
         public DateTime DateTimeNow { get; } 
         public RelayCommand AddTaskCommand { get; }
 
-        public AddTaskVM(ObservableCollection<Models.Task> tasks, AddTask window)
+        public AddTaskVM(ObservableCollection<Models.Task> tasks, DatabaseContext databaseContext, AddTask window)
         {
             _tasks = tasks;
+            _databaseContext = databaseContext;
             _window = window;
 
-            Task = new Models.Task();
+            Task = new Models.Task(_databaseContext);
             DateTimeNow = DateTime.Now;
             
             AddTaskCommand = new RelayCommand(o => AddTask());
@@ -35,6 +37,9 @@ namespace ToDo_List.ViewModels
             {
                 Task.Id = _tasks.Last().Id + 1;
                 _tasks.Add(Task);
+                
+                _databaseContext.AddTask(Task);
+                
                 _window.Close();
             }
         }
