@@ -35,11 +35,13 @@ namespace ToDo_List.ViewModels
         {
             if (!string.IsNullOrEmpty(Task.Title))
             {
-                Task.Id = _tasks.Last().Id + 1;
+                if (_tasks.Count > 0)
+                    Task.Id = _tasks.Last().Id + 1;
+                else
+                    Task.Id = 1;
+
                 _tasks.Add(Task);
-                
                 _databaseContext.AddTask(Task);
-                
                 _window.Close();
             }
         }
