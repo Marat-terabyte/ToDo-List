@@ -20,14 +20,14 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="225"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" MouseDown="MoveWindow">
             <Image Source="D:\C#\WPF\ToDo-List\ToDo-List\Assets\The Valley.jpg" Stretch="Fill"/>
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Height="30" Width="40" Click="MinimizeWindow">_</Button>
-                <Button Height="30" Width="40" Click="CloseWindow">X</Button>
+                <Button Height="23" Width="40" Click="MinimizeWindow" Tag="_" Style="{StaticResource ToolButtonStyle}">_</Button>
+                <Button Height="23" Width="40" Click="CloseWindow" Tag="X" Style="{StaticResource ToolButtonStyle}"></Button>
             </StackPanel>
             <TextBlock HorizontalAlignment="Left"
                        VerticalAlignment="Bottom"
@@ -39,7 +39,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <ListBox ItemsSource="{Binding Tasks}">
+            <ListBox ItemsSource="{Binding Tasks}" Style="{StaticResource ListBoxStyle}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -67,7 +67,7 @@
         </Grid>
         
         <Grid Grid.Row="2">
-            <Button Command="{Binding OpenAddTaskWindowCommand}">Add task</Button>
+            <Button Height="45" Command="{Binding OpenAddTaskWindowCommand}">Add task</Button>
         </Grid>
     </Grid>
 </Window>
