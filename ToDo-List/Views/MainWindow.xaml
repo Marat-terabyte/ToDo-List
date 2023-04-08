@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDo_List" xmlns:viewmodels="clr-namespace:ToDo_List.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="590" Width="350" ResizeMode="NoResize"
-        WindowStyle="None">
+        Title="MainWindow" Height="590" Width="340" ResizeMode="NoResize"
+        WindowStyle="None"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}">
     <Window.DataContext>
         <viewmodels:MainWindowVM></viewmodels:MainWindowVM>
     </Window.DataContext>
@@ -67,7 +72,7 @@
         </Grid>
         
         <Grid Grid.Row="2">
-            <Button Height="45" Command="{Binding OpenAddTaskWindowCommand}">Add task</Button>
+            <Button Height="45" FontSize="20" Command="{Binding OpenAddTaskWindowCommand}" Style="{StaticResource MaterialDesignFlatButton}">Add a task</Button>
         </Grid>
     </Grid>
 </Window>

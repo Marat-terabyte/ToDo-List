@@ -6,12 +6,17 @@
         xmlns:local="clr-namespace:ToDo_List.Views" xmlns:viewmodels="clr-namespace:ToDo_List.ViewModels"
         mc:Ignorable="d"
         Title="AddTask" Height="520" Width="450" ResizeMode="NoResize" WindowStyle="None"
-        MouseDown="MoveWindow">
+        MouseDown="MoveWindow"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
-            <RowDefinition Height="445"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="435"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -49,7 +54,7 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <Button Height="40" FontSize="20" Command="{Binding AddTaskCommand}">Add a task</Button>
+            <Button Height="50" FontSize="20" Command="{Binding AddTaskCommand}" Style="{StaticResource MaterialDesignFlatButton}">Add a task</Button>
         </Grid>
     </Grid>
 </Window>
