@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ToDo_List.Models
 {
@@ -16,7 +11,7 @@ namespace ToDo_List.Models
         private string? _description;
         private string? _startTime;
         private string? _endTime;
-        private bool _isCompleted = false;
+        private bool _isDone = false;
         private DatabaseContext _databaseContext;
 
         public int Id
@@ -67,16 +62,16 @@ namespace ToDo_List.Models
                 OnPropertyChanged("EndTime");
             }
         }
-        public bool IsCompleted
+        public bool IsDone
         {
-            get { return _isCompleted; }
+            get { return _isDone; }
             set
             {
-                _isCompleted = value;
-                OnPropertyChanged("IsCompleted");
+                _isDone = value;
+                OnPropertyChanged("IsDone");
                 
                 if (_databaseContext != null)
-                    _databaseContext.ExecuteCommand($"UPDATE tasks SET isDone = '{_isCompleted}' WHERE Id = {_id}");
+                    _databaseContext.ExecuteCommand($"UPDATE tasks SET isDone = '{_isDone}' WHERE Id = {_id}");
             }
         }
         #endregion

@@ -80,7 +80,7 @@ namespace ToDo_List
                     Description = description,
                     StartTime = startTime,
                     EndTime = endTime,
-                    IsCompleted = isDone
+                    IsDone = isDone
                 });
             }
 
@@ -97,7 +97,7 @@ namespace ToDo_List
                     $"'{task.Description}'," +
                     $"'{task.StartTime}'," +
                     $"'{task.EndTime}'," +
-                    $"'{task.IsCompleted}'" +
+                    $"'{task.IsDone}'" +
                     ");";
 
                 SQLiteCommand command = new SQLiteCommand(_connection);
