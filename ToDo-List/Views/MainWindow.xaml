@@ -49,10 +49,10 @@
                     <DataTemplate>
                         <StackPanel>
                             <StackPanel Height="55" Orientation="Horizontal">
-                                <CheckBox Margin="0 0 15 0" IsChecked="{Binding IsCompleted}" VerticalAlignment="Center"></CheckBox>
+                                <CheckBox Margin="0 0 15 0" IsChecked="{Binding IsDone}" VerticalAlignment="Center"></CheckBox>
                                 <StackPanel VerticalAlignment="Center">
                                     <TextBlock FontSize="17" Text="{Binding Title}"></TextBlock>
-                                    <TextBlock FontSize="14" Foreground="{Binding IsCompleted, Converter={StaticResource ForegroundConverter}}" Text="{Binding IsDone, Converter={StaticResource CompletedConverter}}"></TextBlock>
+                                    <TextBlock FontSize="14" Foreground="{Binding IsDone, Converter={StaticResource ForegroundConverter}}" Text="{Binding IsDone, Converter={StaticResource CompletedConverter}}"></TextBlock>
                                 </StackPanel>
 
                                 <StackPanel.ToolTip>
