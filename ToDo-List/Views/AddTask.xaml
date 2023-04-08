@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ToDo_List.Views" xmlns:viewmodels="clr-namespace:ToDo_List.ViewModels"
+        xmlns:local="clr-namespace:ToDo_List.Views" xmlns:viewmodels="clr-namespace:ToDo_List.ViewModels" xmlns:converters="clr-namespace:ToDo_List.Converters"
         mc:Ignorable="d"
         Title="AddTask" Height="520" Width="450" ResizeMode="NoResize" WindowStyle="None"
         MouseDown="MoveWindow"
@@ -12,6 +12,9 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         FontFamily="{DynamicResource MaterialDesignFont}">
+    <Window.Resources>
+        <converters:DatePickerConverter x:Key="DatePickerConverter"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
@@ -43,12 +46,12 @@
 
                 <StackPanel Margin="0 0 0 10">
                     <TextBlock FontSize="14">Start</TextBlock>
-                    <DatePicker Height="30" FontSize="14" Text="{Binding StartTime}"></DatePicker>
+                    <DatePicker Height="30" FontSize="14" Text="{Binding StartTime, Converter={StaticResource DatePickerConverter}, Mode=OneWayToSource}"></DatePicker>
                 </StackPanel>
 
-                <StackPanel>
+                <StackPanel> 
                     <TextBlock FontSize="14">End</TextBlock>
-                    <DatePicker Height="30" FontSize="14" Text="{Binding EndTime}"></DatePicker>
+                    <DatePicker Height="30" FontSize="14" Text="{Binding EndTime,  Converter={StaticResource DatePickerConverter}, Mode=OneWayToSource}"></DatePicker>
                 </StackPanel>
             </StackPanel>
         </Grid>
