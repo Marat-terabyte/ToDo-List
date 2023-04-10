@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace ToDo_List.Models
 {
@@ -13,6 +15,7 @@ namespace ToDo_List.Models
         private string? _endTime;
         private bool _isDone = false;
         private DatabaseContext _databaseContext;
+        private ObservableCollection<Task> _tasks;
 
         public int Id
         {
@@ -74,13 +77,25 @@ namespace ToDo_List.Models
                     _databaseContext.ExecuteCommand($"UPDATE tasks SET isDone = '{_isDone}' WHERE Id = {_id}");
             }
         }
-        #endregion
-        
-        public Task() { }
 
-        public Task(DatabaseContext databaseContext)
+        public RelayCommand DeleteTaskCommand { get; }
+        public RelayCommand EditTaskCommand { get; }
+        #endregion
+
+        public Task(DatabaseContext databaseContext, ObservableCollection<Task> tasks)
         {
             _databaseContext = databaseContext;
+            _tasks = tasks;
+            
+            DeleteTaskCommand = new RelayCommand(o => DeleteTask());
+            EditTaskCommand = new RelayCommand(o => MessageBox.Show("Edit"));
+        }
+
+        private void DeleteTask()
+        {
+            string query = $"DELETE FROM tasks WHERE Id = {this.Id}";
+            _databaseContext.ExecuteCommand(query);
+            _tasks.Remove(this);
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
