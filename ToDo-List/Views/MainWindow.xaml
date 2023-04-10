@@ -44,10 +44,36 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <ListBox ItemsSource="{Binding Tasks}" Style="{StaticResource ListBoxStyle}">
+            <ListBox ItemsSource="{Binding Tasks}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
+                            <StackPanel.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Command="{Binding EditTaskCommand}">
+                                        <MenuItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Height="20"
+                                                       VerticalAlignment="Center"
+                                                       Source="D:\C#\WPF\ToDo-List\ToDo-List\Assets\edit.png">
+                                                </Image>
+                                                <TextBlock Padding="15 0 0 0" VerticalAlignment="Center">Edit</TextBlock>
+                                            </StackPanel>
+                                        </MenuItem.Header>
+                                    </MenuItem>
+                                    <MenuItem Command="{Binding DeleteTaskCommand}">
+                                        <MenuItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Height="20" 
+                                                       VerticalAlignment="Center"
+                                                       Source="D:\C#\WPF\ToDo-List\ToDo-List\Assets\delete.png">
+                                                </Image>
+                                                <TextBlock Padding="15 0 0 0" VerticalAlignment="Center">Remove</TextBlock>
+                                            </StackPanel>
+                                        </MenuItem.Header>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
                             <StackPanel Height="55" Orientation="Horizontal">
                                 <CheckBox Margin="0 0 15 0" IsChecked="{Binding IsDone}" VerticalAlignment="Center"></CheckBox>
                                 <StackPanel VerticalAlignment="Center">
