@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace ToDo_List
 {
-    internal class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         private readonly Action<object> _command;
 
