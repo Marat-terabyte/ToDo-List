@@ -22,7 +22,7 @@ namespace ToDo_List.ViewModels
             _databaseContext = databaseContext;
             _window = window;
 
-            Task = new Models.Task(_databaseContext);
+            Task = new Models.Task(_databaseContext, _tasks);
             DateTimeNow = DateTime.Now;
             
             AddTaskCommand = new RelayCommand(o => AddTask());
