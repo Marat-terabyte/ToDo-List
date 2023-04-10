@@ -18,6 +18,10 @@ namespace ToDo_List.Views
 
         private void CloseWindow(object sender, RoutedEventArgs e) => this.Close();
 
-        private void MoveWindow(object sender, MouseButtonEventArgs e) => this.DragMove();
+        private void MoveWindow(object sender, MouseButtonEventArgs e)
+        {
+            try { this.DragMove(); }
+            catch { }
+        }
     }
 }

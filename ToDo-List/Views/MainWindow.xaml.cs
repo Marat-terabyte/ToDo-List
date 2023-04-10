@@ -15,7 +15,8 @@ namespace ToDo_List
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
+            try { DragMove(); }
+            catch { }
         }
 
         private void CloseWindow(object sender, RoutedEventArgs e) => Close();
