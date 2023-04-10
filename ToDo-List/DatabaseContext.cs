@@ -73,7 +73,7 @@ namespace ToDo_List
                 string? endTime = reader.GetValue(4).ToString();
                 bool isDone = Convert.ToBoolean(reader.GetString(5));
 
-                tasks.Add(new Models.Task(this)
+                tasks.Add(new Models.Task(this, tasks)
                 {
                     Id = id,
                     Title = title,
