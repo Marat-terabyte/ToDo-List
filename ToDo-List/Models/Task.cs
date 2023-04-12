@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using ToDo_List.Views;
 
 namespace ToDo_List.Models
 {
@@ -34,6 +35,9 @@ namespace ToDo_List.Models
             {
                 _title = value;
                 OnPropertyChanged("Title");
+
+                if (_databaseContext != null)
+                    _databaseContext.ExecuteCommand($"UPDATE tasks SET Title = '{_title}' WHERE Id = {_id}");
             }
         }
         
@@ -44,6 +48,9 @@ namespace ToDo_List.Models
             {
                 _description = value;
                 OnPropertyChanged("Description");
+
+                if (_databaseContext != null)
+                    _databaseContext.ExecuteCommand($"UPDATE tasks SET Description = '{_description}' WHERE Id = {_id}");
             }
         }
 
@@ -54,6 +61,9 @@ namespace ToDo_List.Models
             {
                 _startTime = value;
                 OnPropertyChanged("StartTime");
+                
+                if (_databaseContext != null)
+                    _databaseContext.ExecuteCommand($"UPDATE tasks SET StartTime = '{_startTime}' WHERE Id = {_id}");
             }
         }
         public string? EndTime
@@ -63,6 +73,9 @@ namespace ToDo_List.Models
             {
                 _endTime = value;
                 OnPropertyChanged("EndTime");
+                
+                if (_databaseContext != null)
+                    _databaseContext.ExecuteCommand($"UPDATE tasks SET EndTime = '{_endTime}' WHERE Id = {_id}");
             }
         }
         public bool IsDone
@@ -88,7 +101,7 @@ namespace ToDo_List.Models
             _tasks = tasks;
             
             DeleteTaskCommand = new RelayCommand(o => DeleteTask());
-            EditTaskCommand = new RelayCommand(o => MessageBox.Show("Edit"));
+            EditTaskCommand = new RelayCommand(o => EditTask());
         }
 
         private void DeleteTask()
@@ -96,6 +109,12 @@ namespace ToDo_List.Models
             string query = $"DELETE FROM tasks WHERE Id = {this.Id}";
             _databaseContext.ExecuteCommand(query);
             _tasks.Remove(this);
+        }
+
+        private void EditTask()
+        {
+            EditTask editTask = new EditTask(this);
+            editTask.Show();
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
