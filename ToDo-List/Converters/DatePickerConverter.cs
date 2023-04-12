@@ -9,6 +9,9 @@ namespace ToDo_List.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value is not null && value.ToString().Length != 0)
+                return System.Convert.ToDateTime(value);
+            
             return DependencyProperty.UnsetValue;
         }
 
