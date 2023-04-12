@@ -29,7 +29,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" MouseDown="MoveWindow">
-            <Image Source="D:\C#\WPF\ToDo-List\ToDo-List\Assets\The Valley.jpg" Stretch="Fill"/>
+            <Image Source="/ToDo-List;component/Assets/The Valley.jpg" Stretch="Fill"/>
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
                 <Button Height="23" Width="40" Click="MinimizeWindow" Tag="_" Style="{StaticResource ToolButtonStyle}">_</Button>
                 <Button Height="23" Width="40" Click="CloseWindow" Tag="X" Style="{StaticResource ToolButtonStyle}"></Button>
@@ -55,7 +55,7 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <Image Height="20"
                                                        VerticalAlignment="Center"
-                                                       Source="D:\C#\WPF\ToDo-List\ToDo-List\Assets\edit.png">
+                                                       Source="/ToDo-List;component/Assets/edit.png">
                                                 </Image>
                                                 <TextBlock Padding="15 0 0 0" VerticalAlignment="Center">Edit</TextBlock>
                                             </StackPanel>
@@ -66,7 +66,7 @@
                                             <StackPanel Orientation="Horizontal">
                                                 <Image Height="20" 
                                                        VerticalAlignment="Center"
-                                                       Source="D:\C#\WPF\ToDo-List\ToDo-List\Assets\delete.png">
+                                                       Source="/ToDo-List;component/Assets/delete.png">
                                                 </Image>
                                                 <TextBlock Padding="15 0 0 0" VerticalAlignment="Center">Remove</TextBlock>
                                             </StackPanel>
