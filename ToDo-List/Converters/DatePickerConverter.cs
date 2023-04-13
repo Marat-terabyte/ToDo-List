@@ -11,12 +11,12 @@ namespace ToDo_List.Converters
         {
             if (value is not null && value.ToString().Length != 0)
                 return System.Convert.ToDateTime(value);
-            
+
             return DependencyProperty.UnsetValue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {            
+        {
             return (string)value;
         }
     }

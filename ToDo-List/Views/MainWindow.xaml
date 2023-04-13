@@ -31,8 +31,8 @@
         <Grid Grid.Row="0" MouseDown="MoveWindow">
             <Image Source="/ToDo-List;component/Assets/The Valley.jpg" Stretch="Fill"/>
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Height="23" Width="40" Click="MinimizeWindow" Tag="_" Style="{StaticResource ToolButtonStyle}">_</Button>
-                <Button Height="23" Width="40" Click="CloseWindow" Tag="X" Style="{StaticResource ToolButtonStyle}"></Button>
+                <Button Height="23" Width="40" Foreground="#FFBDBDBD" Click="MinimizeWindow" Style="{StaticResource MaterialDesignFlatSecondaryButton}">_</Button>
+                <Button Height="23" Width="40" Foreground="Red" Click="CloseWindow" Style="{StaticResource MaterialDesignFlatSecondaryButton}">X</Button>
             </StackPanel>
             <TextBlock HorizontalAlignment="Left"
                        VerticalAlignment="Bottom"
@@ -44,10 +44,20 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <ListBox ItemsSource="{Binding Tasks}">
+            <ListBox ItemsSource="{Binding Tasks}" d:ItemsSource="{d:SampleData ItemCount=5}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
+                            <StackPanel.ToolTip>
+                                <ToolTip>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding StringFormat=Description: {0}, Path=Description}"></TextBlock>
+                                        <TextBlock Text="{Binding StringFormat=Start: {0}, Path=StartTime}"></TextBlock>
+                                        <TextBlock Text="{Binding StringFormat=End: {0}, Path=EndTime}"></TextBlock>
+                                    </StackPanel>
+                                </ToolTip>
+                            </StackPanel.ToolTip>
+
                             <StackPanel.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Command="{Binding EditTaskCommand}">
@@ -74,22 +84,13 @@
                                     </MenuItem>
                                 </ContextMenu>
                             </StackPanel.ContextMenu>
+
                             <StackPanel Height="55" Orientation="Horizontal">
                                 <CheckBox Margin="0 0 15 0" IsChecked="{Binding IsDone}" VerticalAlignment="Center"></CheckBox>
                                 <StackPanel VerticalAlignment="Center">
-                                    <TextBlock FontSize="17" Text="{Binding Title}"></TextBlock>
+                                    <TextBlock Width="295" FontSize="17" Text="{Binding Title}"></TextBlock>
                                     <TextBlock FontSize="14" Foreground="{Binding IsDone, Converter={StaticResource ForegroundConverter}}" Text="{Binding IsDone, Converter={StaticResource CompletedConverter}}"></TextBlock>
                                 </StackPanel>
-
-                                <StackPanel.ToolTip>
-                                    <ToolTip>
-                                        <StackPanel>
-                                            <TextBlock Text="{Binding StringFormat=Description: {0}, Path=Description}"></TextBlock>
-                                            <TextBlock Text="{Binding StringFormat=Start: {0}, Path=StartTime}"></TextBlock>
-                                            <TextBlock Text="{Binding StringFormat=End: {0}, Path=EndTime}"></TextBlock>
-                                        </StackPanel>
-                                    </ToolTip>
-                                </StackPanel.ToolTip>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>

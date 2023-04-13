@@ -24,7 +24,7 @@
 
         <Grid Grid.Row="0">
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Tag="X" Width="40" Click="CloseWindow" Style="{StaticResource ToolButtonStyle}"/>
+                <Button Width="40" Foreground="Red" Click="CloseWindow" Style="{StaticResource MaterialDesignFlatSecondaryButton}">X</Button>
             </StackPanel>
         </Grid>
         
