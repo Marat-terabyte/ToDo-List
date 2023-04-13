@@ -21,7 +21,7 @@ namespace ToDo_List.ViewModels
         public MainWindowVM()
         {
             DbContext = new DatabaseContext();
-            
+
             Tasks = DbContext.GetTasks();
 
             OpenAddTaskWindowCommand = new RelayCommand(o => OpenAddTaskWindow());

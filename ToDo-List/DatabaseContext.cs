@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Data.SQLite;
 using System.IO;
-using static System.Net.Mime.MediaTypeNames;
-using System.Windows;
-using System.Collections.ObjectModel;
-using System.Windows.Threading;
+using System.Threading.Tasks;
 
 namespace ToDo_List
 {
@@ -62,7 +56,7 @@ namespace ToDo_List
 
             SQLiteCommand command = new SQLiteCommand(_connection);
             command.CommandText = query;
-            
+
             SQLiteDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
