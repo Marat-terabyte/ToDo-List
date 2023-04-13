@@ -5,7 +5,7 @@
 <img src="https://github.com/Marat-terabyte/ToDo-List/blob/main/Images/MainWindow.png">
 </a>
 </div>
-<div align="center"><H3>Main Window in ToDo-List</H3></div>
+<div align="center"><H3>List of tasks in ToDo-List</H3></div>
 
 <div align="center">
 <a href="https://github.com/Marat-terabyte/ToDo-List/">
