@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ToDoList_DatabaseTest.Model
 {
-    internal class ToDoTask
+    public class ToDoTask
     {
         public int Id { get; set; }
         public string Name { get; set; }
