@@ -7,7 +7,7 @@ namespace ToDoList_DatabaseTest.Model
     /// <summary>
     /// <see cref="TaskRepository"/> encapsulates the logic of the <see cref="DatabaseContext"/>
     /// </summary>
-    internal class TaskRepository : IRepository<ToDoTask>
+    public class TaskRepository : IRepository<ToDoTask>
     {
         private DatabaseContext _db;
 

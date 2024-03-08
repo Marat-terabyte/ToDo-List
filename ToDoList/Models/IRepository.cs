@@ -10,7 +10,7 @@ namespace ToDoList_DatabaseTest.Model
     /// <see cref="IRepository{T}"/> represents the Repository pattern
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal interface IRepository<T>
+    public interface IRepository<T>
     {
         IEnumerable<T> GetAll();
         T? Get(int id);
