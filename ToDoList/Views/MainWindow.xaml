@@ -1,12 +1,110 @@
 ﻿<Window x:Class="ToDoList.MainWindow"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToDoList"
+        xmlns:viewmodels="clr-namespace:ToDoList.ViewModels"
+        xmlns:converters="clr-namespace:ToDoList.Converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="ToDo-List" Height="590" Width="340" ResizeMode="NoResize"
+        WindowStyle="None"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        x:Name="Window">
+    <Window.DataContext>
+        <viewmodels:MainWindowVM></viewmodels:MainWindowVM>
+    </Window.DataContext>
 
+    <Window.Resources>
+        <converters:CompletedConverter x:Key="CompletedConverter"/>
+        <converters:ForegroundConverter x:Key="ForegroundConverter"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="225"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" MouseLeftButtonDown="MoveWindow">
+            <Image Source="/ToDoList;component/Assets/The Valley.jpg" Stretch="Fill"/>
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Height="23" Width="40" Foreground="#FFBDBDBD" Click="MinimizeWindow" Style="{StaticResource MaterialDesignFlatSecondaryButton}">_</Button>
+                <Button Height="23" Width="40" Foreground="Red" Click="CloseWindow" Style="{StaticResource MaterialDesignFlatSecondaryButton}">X</Button>
+            </StackPanel>
+            <TextBlock HorizontalAlignment="Left"
+                       VerticalAlignment="Bottom"
+                       FontSize="33"
+                       Foreground="White"
+                       Margin="10 0 0 0"
+                       Text="{Binding DateTimeNow}">
+            </TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <ListBox ItemsSource="{Binding Path=Tasks}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Tag="{Binding DataContext, ElementName=Window}">
+                            <StackPanel.ToolTip>
+                                <ToolTip>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding StringFormat=Description: {0}, Path=Description}"></TextBlock>
+                                        <TextBlock Text="{Binding StringFormat=Start: {0}, Path=Created}"></TextBlock>
+                                        <TextBlock Text="{Binding StringFormat=End: {0}, Path=DateLimit}"></TextBlock>
+                                    </StackPanel>
+                                </ToolTip>
+                            </StackPanel.ToolTip>
+
+                            <StackPanel.ContextMenu>
+                                <ContextMenu Tag="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Id}" DataContext="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+                                    <MenuItem Command="{Binding Path=EditTaskCommand}">
+                                        <MenuItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Height="20"
+                                                    VerticalAlignment="Center"
+                                                    Source="/ToDoList;component/Assets/edit.png">
+                                                </Image>
+                                                <TextBlock Padding="15 0 0 0" VerticalAlignment="Center">Edit</TextBlock>
+                                            </StackPanel>
+                                        </MenuItem.Header>
+                                    </MenuItem>
+
+                                    <MenuItem Command="{Binding DeleteTaskCommand}" CommandParameter="{Binding Id}" >
+                                        <MenuItem.Header>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Height="20" 
+                                                    VerticalAlignment="Center"
+                                                    Source="/ToDoList;component/Assets/delete.png">
+                                                </Image>
+                                                <TextBlock Padding="15 0 0 0" VerticalAlignment="Center">Remove</TextBlock>
+                                            </StackPanel>
+                                        </MenuItem.Header>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
+
+                            <StackPanel Height="55" Orientation="Horizontal">
+                                <CheckBox Margin="0 0 15 0" IsChecked="{Binding Path=IsDone}" VerticalAlignment="Center"></CheckBox>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Width="295" FontSize="17" Text="{Binding Path=Name}"></TextBlock>
+                                    <TextBlock FontSize="14" Foreground="{Binding Path=IsDone, Converter={StaticResource ForegroundConverter}}" Text="{Binding IsDone, Converter={StaticResource CompletedConverter}}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Button Height="45" FontSize="20" Command="{Binding OpenAddTaskCommand}" Style="{StaticResource MaterialDesignFlatButton}">Add a task</Button>
+        </Grid>
     </Grid>
 </Window>
