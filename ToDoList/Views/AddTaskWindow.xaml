@@ -14,7 +14,7 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        MouseRightButtonDown="MoveWindow">
+        MouseLeftButtonDown="MoveWindow">
     <Window.Resources>
         <converters:DatePickerConverter x:Key="DatePickerConverter"></converters:DatePickerConverter>
     </Window.Resources>

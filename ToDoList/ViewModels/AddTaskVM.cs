@@ -32,14 +32,18 @@ namespace ToDoList.ViewModels
             AddTaskCommand = new RelayCommand(o => AddToDoTask());
         }
 
-        private void AddToDoTask()
+        private async void AddToDoTask()
         {
             bool isTaskValid = ToDoTaskValidator.CheckValidity(TaskToAdd);
             if (isTaskValid)
             {
                 _tasks.Add(TaskToAdd);
-                _db.Add(TaskToAdd);
-                _db.SaveAsync();
+                
+                await Task.Run(() =>
+                {
+                    _db.Add(TaskToAdd);
+                    _db.SaveAsync();
+                });
 
                 _window.Close();
             }

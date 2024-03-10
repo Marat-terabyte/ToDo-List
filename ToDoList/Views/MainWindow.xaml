@@ -51,7 +51,7 @@
             <ListBox ItemsSource="{Binding Path=Tasks}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Tag="{Binding DataContext, ElementName=Window}">
+                        <StackPanel>
                             <StackPanel.ToolTip>
                                 <ToolTip>
                                     <StackPanel>
@@ -63,7 +63,7 @@
                             </StackPanel.ToolTip>
 
                             <StackPanel.ContextMenu>
-                                <ContextMenu Tag="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}, Path=Id}" DataContext="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
+                                <ContextMenu Tag="{Binding Path=Id}" DataContext="{Binding PlacementTarget.Tag, RelativeSource={RelativeSource Self}}">
                                     <MenuItem Command="{Binding Path=EditTaskCommand}">
                                         <MenuItem.Header>
                                             <StackPanel Orientation="Horizontal">
@@ -76,7 +76,7 @@
                                         </MenuItem.Header>
                                     </MenuItem>
 
-                                    <MenuItem Command="{Binding DeleteTaskCommand}" CommandParameter="{Binding Id}" >
+                                    <MenuItem Command="{Binding Path=DeleteTaskCommand}">
                                         <MenuItem.Header>
                                             <StackPanel Orientation="Horizontal">
                                                 <Image Height="20" 
@@ -91,7 +91,7 @@
                             </StackPanel.ContextMenu>
 
                             <StackPanel Height="55" Orientation="Horizontal">
-                                <CheckBox Margin="0 0 15 0" IsChecked="{Binding Path=IsDone}" VerticalAlignment="Center"></CheckBox>
+                                <CheckBox Margin="0 0 15 0" Command="{Binding Path=DataContext.UpdateTaskCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" IsChecked="{Binding Path=IsDone}" VerticalAlignment="Center"></CheckBox>
                                 <StackPanel VerticalAlignment="Center">
                                     <TextBlock Width="295" FontSize="17" Text="{Binding Path=Name}"></TextBlock>
                                     <TextBlock FontSize="14" Foreground="{Binding Path=IsDone, Converter={StaticResource ForegroundConverter}}" Text="{Binding IsDone, Converter={StaticResource CompletedConverter}}"></TextBlock>
