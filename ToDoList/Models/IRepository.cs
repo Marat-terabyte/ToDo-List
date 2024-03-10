@@ -18,5 +18,11 @@ namespace ToDoList_DatabaseTest.Model
         void Update(T item);
         void Delete(int id);
         void Save();
+
+        Task<IEnumerable<T>> GetAllAsync();
+        Task<T?> GetAsync(int id);
+        void AddAsync(T item);
+        void DeleteAsync(int id);
+        void SaveAsync();
     }
 }

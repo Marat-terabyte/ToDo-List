@@ -28,7 +28,7 @@ namespace ToDoList_DatabaseTest.Model
 
         public void Delete(int id)
         {
-            ToDoTask? taskToDelete = _db.Tasks.FirstOrDefault(x => x.Id == id);
+            ToDoTask? taskToDelete = Get(id);
             if (taskToDelete != null)
             {
                 _db.Tasks.Remove(taskToDelete);
@@ -48,6 +48,35 @@ namespace ToDoList_DatabaseTest.Model
         public void Update(ToDoTask item)
         {
             _db.Entry(item).State = EntityState.Modified;
+        }
+
+        public async Task<IEnumerable<ToDoTask>> GetAllAsync()
+        {
+            return await _db.Tasks.ToListAsync();
+        }
+
+        public async Task<ToDoTask?> GetAsync(int id)
+        {
+            return await _db.Tasks.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async void AddAsync(ToDoTask item)
+        {
+            await _db.Tasks.AddAsync(item);
+        }
+
+        public async void DeleteAsync(int id)
+        {
+            ToDoTask? taskToDelete = await GetAsync(id);
+            if (taskToDelete != null)
+            {
+                _db.Tasks.Remove(taskToDelete);
+            }
+        }
+
+        public async void SaveAsync()
+        {
+            await _db.SaveChangesAsync();
         }
     }
 }
